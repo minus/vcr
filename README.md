@@ -1,6 +1,6 @@
-= VCR =
+# VCR
 
-== Running a comparison ==
+## Running a comparison
 
 This script requires chromedriver (Node implementation didn't work with
 geckodriver at the time of writing), and thus does not support taking
@@ -35,7 +35,7 @@ repeated for the test branch.
 Finally, a report is generated (based on the `template.njk` Nunjucks template)
 and saved in the file `vcr-results.html`.
 
-=== Test JSON format ===
+### Test JSON format
 
 The JSON must be an object whose keys are strings giving the name of each test
 case.
@@ -48,9 +48,9 @@ The value for each key must be an object with two properties:
   to use chromedriver in Node; use the separate Python screenshot script if
   needed
 
-== Taking screenshots only ==
+## Taking screenshots only
 
-=== Python implementation ===
+### Python implementation
 
 This works best, as long as you use Firefox (for now this is just hardcoded in
 the script) it supports taking screenshots of individual elements as well as
@@ -88,7 +88,7 @@ python3 vcr-capture.py tests.json screenshots/foo
 ```
 
 
-=== Node implementation ===
+### Node implementation
 
 This doesn't work that well currently, the JS Selenium bindings seem to be
 broken for geckodriver, so can't use that (for now chromedriver is just
@@ -109,7 +109,7 @@ Usage:
 node vcr-capture.js tests.json screenshots/foo
 ```
 
-== Comparing screenshots only ==
+## Comparing screenshots only
 
 Installing:
 ```
@@ -122,7 +122,7 @@ Usage:
 node vcr-compare.js screenshots/foo screenshots/bar
 ```
 
-== Generating report only ==
+## Generating report only
 
 Installing:
 ```
