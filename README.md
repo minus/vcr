@@ -75,7 +75,7 @@ sudo pip3 install selenium
 Regardless:
 
 download geckodriver from https://github.com/mozilla/geckodriver/releases
-extract to e.g. ~/bin and export PATH=$PATH:~/bin
+extract to e.g. \~/bin and export PATH=$PATH:\~/bin
 
 ```
 python vcr-capture.py tests.json screenshots/foo
@@ -102,7 +102,7 @@ npm install
 ```
 
 download chromedriver from https://sites.google.com/a/chromium.org/chromedriver/downloads
-extract to e.g. ~/bin and export PATH=$PATH:~/bin
+extract to e.g. \~/bin and export PATH=$PATH:\~/bin
 
 Usage:
 ```
