@@ -1,0 +1,10 @@
+{
+    "full_page": {
+        "url": "http://192.168.33.10/",
+        "selector": null
+    },
+    "header" : {
+        "url": "http://192.168.33.10/",
+        "selector": "#headermenu"
+    }
+}

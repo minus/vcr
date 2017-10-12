@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>VCR test results</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+        .results {
+            padding: 0;
+        }
+        .results > li {
+            border-bottom: 1px solid;
+        }
+        .results > li:first-child {
+            border-top: 1px solid;
+        }
+
+        .results > li::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .results .name {
+            float: left;
+            padding: 1rem;
+        }
+        .results .result {
+            float: right;
+            padding: 1rem 2rem;
+            min-width: 5rem;
+        }
+        .results .result.PASS {
+            background-color: darkseagreen;
+        }
+        .results .result.FAIL {
+            background-color: indianred;
+        }
+        .results button {
+            border: none;
+            padding: 0.75rem 1rem;
+            background-color: silver;
+            border-radius: 0.25rem;
+            cursor: pointer;
+        }
+        .results .expand {
+            float: right;
+            margin-top: 0.25rem;
+            margin-right: 0.5rem;
+        }
+        .results .toggle {
+            margin-bottom: 0.5rem;
+        }
+        .results .details {
+            border-top: 1px dotted;
+            padding: 1rem 0;
+            clear: both;
+        }
+        .results .screenshot {
+            margin: 0;
+        }
+        .results .screenshot > img {
+            max-width: 100%;
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+    <h1>VCR test results</h1>
+    <ul class="results">
+        {% for tc in results %}
+            <li class="js-tc">
+                <span class="name">
+                    {{ tc.name }}
+                </span>
+                <span class="result {{ tc.result }}">
+                    {{ tc.result }}
+                </span>
+                <button type="button" hidden class="expand js-expand">
+                    Show details
+                </button>
+                <div class="details js-details">
+                    <button type="button" hidden class="toggle js-toggle">
+                        Show ref screenshot
+                    </button>
+                    <figure class="screenshot js-test">
+                        <img src="{{ tc.test }}">
+                    </figure>
+                    <figure class="screenshot js-ref">
+                        <img src="{{ tc.ref }}">
+                    </figure>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <script>
+        (function() {
+            var tcs = document.querySelectorAll('.js-tc');
+            [].forEach.call(tcs, function(tc) {
+                var expandButton = tc.querySelector('.js-expand');
+                var toggleButton = tc.querySelector('.js-toggle');
+                var details = tc.querySelector('.js-details');
+                var testScreenshot = tc.querySelector('.js-test');
+                var refScreenshot = tc.querySelector('.js-ref');
+
+                details.hidden = true;
+                refScreenshot.hidden = true;
+                expandButton.hidden = false;
+                toggleButton.hidden = false;
+
+                expandButton.addEventListener('click', function() {
+                    details.hidden = !details.hidden;
+                    expandButton.textContent = details.hidden ?
+                            'Show details' : 'Hide details';
+                });
+
+                toggleButton.addEventListener('click', function() {
+                    testScreenshot.hidden = !testScreenshot.hidden;
+                    refScreenshot.hidden = !refScreenshot.hidden;
+                    toggleButton.textContent = refScreenshot.hidden ?
+                            'Show ref screenshot' : 'Show test screenshot';
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

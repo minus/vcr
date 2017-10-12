@@ -1,0 +1,26 @@
+{
+    "front_page": {
+        "url": "http://192.168.33.10/",
+        "selector": null
+    },
+    "about" : {
+        "url": "http://192.168.33.10/om-oss",
+        "selector": null
+    },
+    "contact" : {
+        "url": "http://192.168.33.10/kontakt-oss",
+        "selector": null
+    },
+    "standard" : {
+        "url": "http://192.168.33.10/produkter/gipsplater/gipsplate-standard-13",
+        "selector": null
+    },
+    "cf-stender" : {
+        "url": "http://192.168.33.10/produkter/stålprofiler/fr-profil",
+        "selector": null
+    },
+    "brann" : {
+        "url": "http://192.168.33.10/prosjektering/lydkrav/brannteori",
+        "selector": null
+    }
+}
